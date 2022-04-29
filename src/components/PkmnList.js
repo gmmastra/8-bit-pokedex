@@ -69,6 +69,13 @@ export function PkmnList(props) {
     setOpen(true);
   };
 
+  // Optionally press space to enter
+  document.addEventListener('keyup', event => {
+    if (event.code === 'Space' || event.code === 'Enter') {
+      handleClickOpen();
+    }
+  })
+
   return (
     <>
       {/* OPENING PANELS */}
@@ -79,7 +86,7 @@ export function PkmnList(props) {
       <div style={{ textAlign: 'center' }}>
 
         {/* DISPLAY INFOCARDS */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '80px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }} >
           <Box className="info-card-wrapper" sx={{ gridTemplateColumns: { sm: 'repeat(auto-fit, minmax(7.5rem, 1fr))' } }} onScroll={handleScroll} >
             {pkmnMap.map((e) => {
               return <PkmnInfoCard key={e.id}
@@ -94,6 +101,8 @@ export function PkmnList(props) {
         {/* LOADING BAR */}
         {loading && <img style={{ height: '50px' }} src={Loading} alt="loading..." />}
       </div>
+      <div className="halftone" />
+      <div className="bg-logo" />
     </>
   );
 }

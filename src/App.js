@@ -1,13 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { NotFound } from "./pages/NotFound";
+import { Frame } from "./components/Frame";
 import { PkmnList } from "./components/PkmnList";
+import { NotFound } from "./pages/NotFound";
 
 export default function App() {
   return (
     <Router>
       <div className="App">
-        {/* navbar */}
+        <Frame />
         <div className="content">
           <Switch>
             <Route exact path="/8-bit-pokedex/" component={PkmnList} />
