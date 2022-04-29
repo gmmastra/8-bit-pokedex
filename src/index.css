@@ -27,3 +27,34 @@ img {
   margin: 1px;
   color: white;
 }
+
+.info-card-wrapper {
+  width: 80%;
+  display: grid;
+  justify-items: center;
+  overflow-y: auto; 
+  overflow-x: hidden;
+  max-height: 600px;
+  gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+}
+
+/* Width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #f42; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}

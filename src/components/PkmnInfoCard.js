@@ -127,11 +127,11 @@ export function PkmnInfoCard(props) {
 
       {/* ENTRY POPUP */}
       <Dialog
-        fullScreen
         open={open}
         onClose={handleClose}
         TransitionComponent={Transition}
         keepMounted
+        PaperProps={{ sx: { width: "75%", height: "90%", maxWidth: '100%', position:'absolute', top: '6vh' } }}
       >
         <Toolbar>
           <IconButton
