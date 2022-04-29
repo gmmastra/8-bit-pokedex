@@ -58,7 +58,7 @@ const App = () => {
 
       <div style={{ display: 'flex', justifyContent: 'center', marginTop: '80px' }}>
         {/* DISPLAY INFOCARDS */}
-        <Box className="info-card-wrapper" sx={{ gridTemplateColumns: { sm: 'repeat(auto-fit, minmax(8rem, 1fr))' } }} onScroll={handleScroll} >
+        <Box className="info-card-wrapper" sx={{ gridTemplateColumns: { sm: 'repeat(auto-fit, minmax(7.5rem, 1fr))' } }} onScroll={handleScroll} >
           {pkmnMap.map((e) => {
             return <PkmnInfoCard key={e.id}
               id={e.id}
