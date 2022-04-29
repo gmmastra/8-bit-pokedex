@@ -27,7 +27,7 @@ export function PkmnInfoCard(props) {
 
   const soundUrl = `https://veekun.com/dex/media/pokemon/cries/${props.id}.ogg`;
 
-  const [play, { stop }] = useSound(
+  const [play] = useSound(
     soundUrl,
     { volume: 0.1 } // my ears...
   );
