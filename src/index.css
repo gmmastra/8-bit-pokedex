@@ -117,8 +117,19 @@ img {
 }
 
 @keyframes open-right-keyframes {
-  from { left: 10% }
-  to { transform: translateX(130%) }
+  0% {
+    left: 10%;
+   opacity: 1;
+   }
+   99% {
+     left: 130%;
+     opacity: 1;
+   }
+   100% {
+     left: -130%;
+     opacity: 0;
+     display: none;
+   }
 }
 
 @keyframes open-left-keyframes {
