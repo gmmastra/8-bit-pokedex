@@ -33,10 +33,10 @@ export function Frame(props) {
 
     return (
         <>
-            {renderTopBezel('#f42', false)}
+            {renderTopBezel('#ef3131', false)}
             {renderTopBezel('#1b51c5', true)}
 
-            {renderBottomBezel('#f42', false)}
+            {renderBottomBezel('#ef3131', false)}
             {renderBottomBezel('#1b51c5', true)}
         </>
     );

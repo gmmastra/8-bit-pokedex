@@ -1,9 +1,5 @@
 import React from "react";
-import Dialog from '@mui/material/Dialog';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Slide from '@mui/material/Slide';
+import { Dialog, Toolbar, Slide } from '@mui/material';
 import useSound from 'use-sound';
 import { PkmnEntry } from "./PkmnEntry";
 
@@ -25,7 +21,7 @@ export function PkmnInfoCard(props) {
     setOpen(false);
   };
 
-  const soundUrl = `https://veekun.com/dex/media/pokemon/cries/${props.id}.ogg`;
+  const soundUrl = `https://veekun.com/dex/media/pokemon/cries/${props.pkmn.id}.ogg`;
 
   const [play] = useSound(
     soundUrl,
@@ -63,24 +59,24 @@ export function PkmnInfoCard(props) {
     <div>
 
       <div style={{ textAlign: 'center', width: '120px' }}>
-        <button key={props.id} value={props.name} onClick={handleClickOpen} style={{ cursor: 'pointer', padding: '0px', border: '0px', backgroundColor: 'initial' }}>
+        <button key={props.pkmn.id} value={props.pkmn.name} onClick={handleClickOpen} style={{ cursor: 'pointer', padding: '0px', border: '0px', backgroundColor: 'initial' }}>
           {/* SPRITE */}
           <img
-            src={props.sprite}
-            alt={props.name}
+            src={props.pkmn.sprites.versions["generation-viii"].icons.front_default}
+            alt={props.pkmn.name}
             width="120px"
             loading="lazy"
           />
         </button>
         <div>
           {/* ID */}
-          <span>#{(props.id).toString().padStart(3, '0')}</span>
+          <span>#{(props.pkmn.id).toString().padStart(3, '0')}</span>
           {/* NAME */}
-          <p>{props.name}</p>
+          <p>{props.pkmn.name}</p>
           {/* TYPE [1] */}
-          {renderType(props.types[0].type.name)}
+          {renderType(props.pkmn.types[0].type.name)}
           {/* TYPE [2] */}
-          {props.types.length === 2 ? renderType(props.types[1].type.name) : ''}
+          {props.pkmn.types.length === 2 ? renderType(props.pkmn.types[1].type.name) : ''}
         </div>
       </div>
 
@@ -90,19 +86,17 @@ export function PkmnInfoCard(props) {
         onClose={handleClose}
         TransitionComponent={Transition}
         keepMounted
-        PaperProps={{ sx: { width: "75%", height: "90%", maxWidth: '100%', position: 'absolute', top: '6vh' } }}
+        fullScreen
+        PaperProps={{ sx: { height: '100%', maxWidth: {xs: '100%', sm: '100%', md: '65%'}, position: 'absolute', top: '6vh' } }}
       >
-        <Toolbar>
-          <IconButton
-            edge="start"
-            color="inherit"
-            onClick={handleClose}
-            aria-label="close"
-          >
-            <CloseIcon />
-          </IconButton>
+        {/* Toolbar handled outside the entry to close the dialog */}
+        <Toolbar className="entry-toolbar-outer" style={{ minHeight: '35px' }} onClick={handleClose}>
+          <div className="entry-toolbar-inner">
+            <span className="outlined" style={{ fontSize: '15px', paddingRight: '6px', paddingLeft: '10px' }} >▼</span>
+            <span className="outlined" style={{ fontSize: '25px' }}>Info</span>
+          </div>
         </Toolbar>
-        <PkmnEntry pkmn={props.name} />
+        <PkmnEntry pkmn={props.pkmn} />
       </Dialog>
     </div>
   );

@@ -13,7 +13,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
   background-image: linear-gradient(#bfd8db, #e3fcff);
-  border: 1vh solid #f42;
+  border: 1vh solid #ef3131;
   border-top-width: 7vh;
 }
 
@@ -50,12 +50,19 @@ img {
   height: 100%;
   width: 100%;
   position: absolute;
+  padding-top: 7vh;
   top: 0;
   left: 0;
   z-index: -4;
   background-image: url("./assets/bg_1.png");
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+.outlined {
+  color: white;
+  font-weight: bold;
+  text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
 }
 
 /* Box surrounding typing labels */
@@ -121,7 +128,7 @@ img {
 
 /* Panels for landing page animation */
 .curtain__panel {
-  background: #f42;
+  background: #ef3131;
   position: absolute;
   width: 100%;
   height: 100vh;
@@ -129,7 +136,7 @@ img {
 }
 
 .curtain__panel--left {
-  background: rgb(168, 43, 21);
+  background: #951021;
   right: 0;
   left: 0;
   top: 0;
@@ -160,6 +167,32 @@ img {
   right: 0;
 }
 
+.entry-grid {
+  display: flex;
+  background-size: 70px 70px;
+  background-image:
+    linear-gradient(to right, rgba(128, 128, 128, 0.486) 2px, transparent 2px),
+    linear-gradient(to bottom, rgba(128, 128, 128, 0.486) 2px, transparent 2px);
+}
+
+.entry-toolbar-outer {
+  background-color: #951021;
+  cursor: pointer;
+  box-shadow: 0rem 0.5rem #292929, 0rem 1.5rem #adadad, 0rem 2rem #cecece, 0rem 2.5rem #e7e7e7;
+  mix-blend-mode: multiply;
+}
+
+.entry-toolbar-inner {
+  background-color: #ef3131;
+  width: 100%;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  border: solid 4px #c82224;
+  border-left-width: 10px;
+  border-right-width: 10px;
+}
+
 /* Width */
 ::-webkit-scrollbar {
   width: 10px;
@@ -172,10 +205,10 @@ img {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #f42;
+  background: #ef3131;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: 951021;
 }

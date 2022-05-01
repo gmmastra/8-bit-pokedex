@@ -50,8 +50,8 @@ export function PkmnList(props) {
 
   // Fetch next chunk when near bottom of page
   const handleScroll = (e) => {
-    const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 10;
-    if (bottom) {
+    const bottom = e.target.scrollHeight - e.target.scrollTop < e.target.clientHeight + 1;
+    if (bottom && !loading) {
       fetchPokemon();
     }
   }
@@ -69,7 +69,7 @@ export function PkmnList(props) {
     setOpen(true);
   };
 
-  // Optionally press space to enter
+  // Optionally press space/enter to enter
   document.addEventListener('keyup', event => {
     if (event.code === 'Space' || event.code === 'Enter') {
       handleClickOpen();
@@ -89,11 +89,7 @@ export function PkmnList(props) {
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }} >
           <Box className="info-card-wrapper" sx={{ gridTemplateColumns: { sm: 'repeat(auto-fit, minmax(7.5rem, 1fr))' } }} onScroll={handleScroll} >
             {pkmnMap.map((e) => {
-              return <PkmnInfoCard key={e.id}
-                id={e.id}
-                name={e.name}
-                types={e.types}
-                sprite={e.sprites.versions["generation-viii"].icons.front_default} />;
+              return <PkmnInfoCard key={e.id} pkmn={e} />;
             })}
           </Box>
         </div>
