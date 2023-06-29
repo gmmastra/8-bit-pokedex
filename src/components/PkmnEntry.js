@@ -29,11 +29,11 @@ export function PkmnEntry(props) {
       <Box sx={{ display: 'flex', margin: '30px auto 10px auto', padding: '20px', width: { xs: '100%', sm: '100%', md: '80%' }, flexWrap: 'wrap' }}>
 
         {/* SPRITE */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', maxWidth: '40%' }}>
+        <Box sx={{ display: 'flex', flexBasis: '40%', justifyContent: 'center', maxWidth: '40%' }}>
           <img
             src={props.pkmn.sprites.versions["generation-v"]["black-white"].animated.front_default}
             alt={props.pkmn.name}
-            style={{ zoom: 2, height: '40vw', paddingTop: '10%', maxHeight: '200px' }}
+            style={{ height: '40vw', paddingTop: '10%', maxHeight: '200px' }}
             loading="lazy"
           />
         </Box>
