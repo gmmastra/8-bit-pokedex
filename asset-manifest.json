@@ -1,18 +1,19 @@
 {
   "files": {
-    "main.css": "/8-bit-pokedex/static/css/main.069ba28b.css",
-    "main.js": "/8-bit-pokedex/static/js/main.a00a7ce9.js",
+    "main.css": "/8-bit-pokedex/static/css/main.9948a0a4.css",
+    "main.js": "/8-bit-pokedex/static/js/main.f08c80a8.js",
     "static/js/845.bd4d3779.chunk.js": "/8-bit-pokedex/static/js/845.bd4d3779.chunk.js",
     "static/media/loading.gif": "/8-bit-pokedex/static/media/loading.7c9452d20758c603ff93.gif",
     "static/media/plink.mp3": "/8-bit-pokedex/static/media/plink.26571df9ec21958fa74d.mp3",
+    "static/media/pokemon_pixel_font.otf": "/8-bit-pokedex/static/media/pokemon_pixel_font.d6f9fba9cb78defc4aa5.otf",
     "static/media/open.mp3": "/8-bit-pokedex/static/media/open.ba99c923d25a19bf72c1.mp3",
     "index.html": "/8-bit-pokedex/index.html",
-    "main.069ba28b.css.map": "/8-bit-pokedex/static/css/main.069ba28b.css.map",
-    "main.a00a7ce9.js.map": "/8-bit-pokedex/static/js/main.a00a7ce9.js.map",
+    "main.9948a0a4.css.map": "/8-bit-pokedex/static/css/main.9948a0a4.css.map",
+    "main.f08c80a8.js.map": "/8-bit-pokedex/static/js/main.f08c80a8.js.map",
     "845.bd4d3779.chunk.js.map": "/8-bit-pokedex/static/js/845.bd4d3779.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.069ba28b.css",
-    "static/js/main.a00a7ce9.js"
+    "static/css/main.9948a0a4.css",
+    "static/js/main.f08c80a8.js"
   ]
 }
