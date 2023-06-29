@@ -12,7 +12,6 @@ export default function App() {
         <div className="content">
           <Switch>
             <Route exact path="/8-bit-pokedex/" component={PkmnList} />
-            <Route exact path="/8-bit-pokedex/index" component={PkmnList} />
             <Route component={NotFound} />
           </Switch>
         </div>

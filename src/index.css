@@ -1,4 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@font-face {
+  font-family: "Pokemon Pixel Font Regular";
+  src: url(./assets/font/pokemon_pixel_font.otf) format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   height: 100%;
@@ -7,7 +12,7 @@ html {
 body {
   margin: 0;
   height: 92vh;
-  font-family: 'VT323';
+  font-family: "Pokemon Pixel Font Regular";
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -54,15 +59,37 @@ img {
   top: 0;
   left: 0;
   z-index: -4;
-  background-image: url("./assets/bg_1.png");
+  background-image: url("./assets/img/bg_1.png");
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 .outlined {
   color: white;
-  font-weight: bold;
   text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
+}
+
+.shadowed {
+  color: #585850;
+  text-shadow: 2px 0 0 #a8b8b8, 0 1px 0 #a8b8b8;
+}
+
+.shadowed-black {
+  color: white;
+  text-shadow: 2px 0 0 #000, 0 2px 0 #000;
+}
+
+.entry-box {
+  background-color: white;
+  box-shadow: inset 0px 5px 0px 0px rgba(248,152,160,1);
+}
+
+.flavor-box {
+  background-color: white;
+  box-shadow: inset 0px 0px 0px 5px rgba(248,152,160,1);
+  width: 90%;
+  height: 100%;
+  margin: auto;
 }
 
 /* Box surrounding typing labels */
@@ -179,7 +206,6 @@ img {
 }
 
 .entry-grid {
-  display: flex;
   background-size: 70px 70px;
   background-image:
     linear-gradient(to right, rgba(128, 128, 128, 0.486) 2px, transparent 2px),
@@ -202,6 +228,30 @@ img {
   border: solid 4px #c82224;
   border-left-width: 10px;
   border-right-width: 10px;
+}
+
+.pixel-corners {
+  position: relative;
+  background-color: white;
+  z-index: 1;
+  box-shadow:   -3px 0 0 0 black,
+                 3px 0 0 0 black,
+                 0 -3px 0 0 black,
+                 0 3px 0 0 black;
+}
+
+.pixel-shadow {
+  mix-blend-mode: multiply;
+  background-color: #c0c8d0;
+  box-shadow:   -3px 0 0 0 #c0c8d0,
+                 3px 0 0 0 #c0c8d0,
+                 0 -3px 0 0 #c0c8d0,
+                 0 3px 0 0 #c0c8d0;
+}
+
+.height-weight-box {
+  padding: 0 20px 0 20px;
+  text-align: right;
 }
 
 /* Width */

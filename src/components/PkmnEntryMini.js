@@ -8,7 +8,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export function PkmnInfoCard(props) {
+export function PkmnEntryMini(props) {
 
   const [open, setOpen] = React.useState(false);
 
@@ -21,13 +21,14 @@ export function PkmnInfoCard(props) {
     setOpen(false);
   };
 
+  // plays pokemon cry on entry open
   const soundUrl = `https://veekun.com/dex/media/pokemon/cries/${props.pkmn.id}.ogg`;
-
   const [play] = useSound(
     soundUrl,
     { volume: 0.1 } // my ears...
   );
 
+  // holds colors for pokemon typing
   const TYPE_COLORS = {
     bug: "#ab2",
     dark: "#754",
@@ -49,6 +50,7 @@ export function PkmnInfoCard(props) {
     water: "#39f",
   };
 
+  // creates type box
   function renderType(type) {
     return <span className="type-box" style={{ backgroundColor: `${TYPE_COLORS[type]}` }}>
       {type}
@@ -57,7 +59,6 @@ export function PkmnInfoCard(props) {
 
   return (
     <div>
-
       <div style={{ textAlign: 'center', width: '120px' }}>
         <button key={props.pkmn.id} value={props.pkmn.name} onClick={handleClickOpen} style={{ cursor: 'pointer', padding: '0px', border: '0px', backgroundColor: 'initial' }}>
           {/* SPRITE */}
@@ -75,7 +76,7 @@ export function PkmnInfoCard(props) {
           <p>{props.pkmn.name}</p>
           {/* TYPE [1] */}
           {renderType(props.pkmn.types[0].type.name)}
-          {/* TYPE [2] */}
+          {/* TYPE [2] (if applicable) */}
           {props.pkmn.types.length === 2 ? renderType(props.pkmn.types[1].type.name) : ''}
         </div>
       </div>
@@ -87,16 +88,16 @@ export function PkmnInfoCard(props) {
         TransitionComponent={Transition}
         keepMounted
         fullScreen
-        PaperProps={{ sx: { height: '100%', maxWidth: {xs: '100%', sm: '100%', md: '65%'}, position: 'absolute', top: '6vh' } }}
+        PaperProps={{ sx: { height: '100%', maxWidth: {xs: '100%', sm: '100%', md: 'min(65%,900px)'}, position: 'absolute', top: '6vh' } }}
       >
-        {/* Toolbar handled outside the entry to close the dialog */}
+        {/* Toolbar handled outside the entry (to be able to close the dialog) */}
         <Toolbar className="entry-toolbar-outer" style={{ minHeight: '35px' }} onClick={handleClose}>
           <div className="entry-toolbar-inner">
             <span className="outlined" style={{ fontSize: '15px', paddingRight: '6px', paddingLeft: '10px' }} >▼</span>
             <span className="outlined" style={{ fontSize: '25px' }}>Info</span>
           </div>
         </Toolbar>
-        <PkmnEntry pkmn={props.pkmn} />
+        <PkmnEntry pkmn={props.pkmn} extra={props.extra} colors={TYPE_COLORS} />
       </Dialog>
     </div>
   );

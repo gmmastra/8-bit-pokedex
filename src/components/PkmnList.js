@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import Box from '@mui/material/Box';
-import { PkmnInfoCard } from "./PkmnInfoCard";
+import { PkmnEntryMini } from "./PkmnEntryMini";
 import useSound from 'use-sound';
-import plinkSfx from '../assets/plink.mp3';
-import openSfx from '../assets/open.mp3';
-import Loading from "../assets/loading.gif";
+import plinkSfx from '../assets/sfx/plink.mp3';
+import openSfx from '../assets/sfx/open.mp3';
+import Loading from "../assets/img/loading.gif";
+import dexOpen from '../assets/img/dex_open.png';
 
 export function PkmnList(props) {
 
+  // general pokemon data
   const [pkmnMap, setPkmnMap] = React.useState([]);
+  // extra pokemon entry data (titles, flavor text, etc.)
+  const [pkmnExtra, setPkmnExtra] = React.useState([]);
+  // holds current id position (loads dynamically)
   const [position, setPosition] = React.useState(1);
   const [initialize, setInitialize] = React.useState(true);
   const [loading, setLoading] = React.useState(false);
@@ -25,23 +30,34 @@ export function PkmnList(props) {
     var chunkSize;
     initialize ? chunkSize = 75 : chunkSize = 25;
     const promiseChunk = [];
+    const extraChunk = [];
 
-    // array of promises (requests)
+    // array of requests
     for (let i = position; i < position + chunkSize; i++) {
       promiseChunk.push(
         axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
           .then(({ data }) => (data))
       );
+      extraChunk.push(
+        axios.get(`https://pokeapi.co/api/v2/pokemon-species/${i}`)
+          .then(({ data }) => (data))
+      );
     }
     // wait to execute in parallel
     const temp = await axios.all(promiseChunk);
+    const tempExtra = await axios.all(extraChunk);
     if (initialize) {
       setPkmnMap(temp);
+      setPkmnExtra(tempExtra);
       setInitialize(false);
     } else {
       setPkmnMap((prevState) => [
         ...prevState,
         ...temp,
+      ]);
+      setPkmnExtra((prevState) => [
+        ...prevState,
+        ...tempExtra,
       ]);
     }
     setPosition(position + chunkSize);
@@ -80,16 +96,23 @@ export function PkmnList(props) {
     <>
       {/* OPENING PANELS */}
       <div className={open ? 'open-right curtain__panel curtain__panel--right' : 'curtain__panel curtain__panel--right'}
-        onClick={handleClickOpen} />
+        onClick={handleClickOpen} style={{ display: 'flex', alignItems: 'center' }}>
+        <Box sx={{ width: '300px', alignSelf: 'flex-start', margin: '-10px' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.2 -0.2 10 6.4">
+            <path d="M0 0 0 4 6 4 10 0" fill='#951021' />
+          </svg>
+        </Box>
+        <img src={dexOpen} alt='click to open' height='fit-content' style={{ margin: '-15% 0 0 -250px' }} />
+      </div>
       <div className={open ? 'open-left curtain__panel curtain__panel--left' : 'curtain__panel curtain__panel--left'}
         onClick={handleClickOpen} />
       <div style={{ textAlign: 'center' }}>
 
         {/* DISPLAY INFOCARDS */}
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }} >
-          <Box className="info-card-wrapper" sx={{ gridTemplateColumns: { sm: 'repeat(auto-fit, minmax(7.5rem, 1fr))' } }} onScroll={handleScroll} >
+          <Box className="info-card-wrapper" sx={{ maxHeight: "85%", gridTemplateColumns: { sm: 'repeat(auto-fit, minmax(7.5rem, 1fr))' } }} onScroll={handleScroll} >
             {pkmnMap.map((e) => {
-              return <PkmnInfoCard key={e.id} pkmn={e} />;
+              return <PkmnEntryMini key={e.id} pkmn={e} extra={pkmnExtra[e.id - 1]} />;
             })}
           </Box>
         </div>
