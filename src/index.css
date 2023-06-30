@@ -64,6 +64,16 @@ img {
   background-position: center center;
 }
 
+.power-indicators {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  margin: 30px 10px;
+  position: relative;
+  z-index: 2;
+  outline: 3px solid black;
+}
+
 .outlined {
   color: white;
   text-shadow: 2px 0 0 #000, 0 -2px 0 #000, 0 2px 0 #000, -2px 0 0 #000;
@@ -178,7 +188,7 @@ img {
   right: 0;
   left: 0;
   top: 0;
-  z-index: 1;
+  display: flex;
 }
 
 .curtain__panel--right {

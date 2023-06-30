@@ -97,6 +97,7 @@ export function PkmnList(props) {
       {/* OPENING PANELS */}
       <div className={open ? 'open-right curtain__panel curtain__panel--right' : 'curtain__panel curtain__panel--right'}
         onClick={handleClickOpen} style={{ display: 'flex', alignItems: 'center' }}>
+        {/* front panel corner */}
         <Box sx={{ width: '300px', alignSelf: 'flex-start', margin: '-10px' }}>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.2 -0.2 10 6.4">
             <path d="M0 0 0 4 6 4 10 0" fill='#951021' />
@@ -104,8 +105,18 @@ export function PkmnList(props) {
         </Box>
         <img src={dexOpen} alt='click to open' height='fit-content' style={{ margin: '-15% 0 0 -250px' }} />
       </div>
+      {/* back panel */}
       <div className={open ? 'open-left curtain__panel curtain__panel--left' : 'curtain__panel curtain__panel--left'}
-        onClick={handleClickOpen} />
+        onClick={handleClickOpen}>
+        {/* large power indicator */}
+        <div className='power-indicators' style={{ backgroundColor: '#629dd7', width: '120px', height: '120px', margin: '30px', border: '10px solid white' }} />
+        {/* small power indicators */}
+        <div style={{ display: 'flex' }}>
+          <div className='power-indicators' style={{ backgroundColor: '#b62e2e' }} />
+          <div className='power-indicators' style={{ backgroundColor: '#f6fa4d' }} />
+          <div className='power-indicators' style={{ backgroundColor: '#5cbe75' }} />
+        </div>
+      </div>
       <div style={{ textAlign: 'center' }}>
 
         {/* DISPLAY INFOCARDS */}
