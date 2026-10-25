@@ -63,7 +63,7 @@ export function PkmnEntryMini(props) {
         <button key={props.pkmn.id} value={props.pkmn.name} onClick={handleClickOpen} style={{ cursor: 'pointer', padding: '0px', border: '0px', backgroundColor: 'initial' }}>
           {/* SPRITE */}
           <img
-            src={props.pkmn.sprites.versions["generation-viii"].icons.front_default}
+            src={props.pkmn.sprites.front_default}
             alt={props.pkmn.name}
             width="120px"
             loading="lazy"
